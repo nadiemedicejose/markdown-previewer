@@ -5,12 +5,14 @@ export default function Editor(props) {
   return (
     <div className='panel'>
       <Toolbar text={props.title} />
-      <textarea
-        id='editor'
-        onChange={props.onChange}
-        type='text'
-        value={props.markdown}
-      />
+      <div className='panel-container'>
+        <textarea
+          id='editor'
+          onChange={props.onChange}
+          type='text'
+          value={props.markdown}
+        />
+      </div>
     </div>
   )
 }

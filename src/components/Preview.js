@@ -17,12 +17,14 @@ export default function Preview(props) {
   return (
     <div className='panel'>
       <Toolbar text={props.title} />
-      <div
-        id='preview'
-        dangerouslySetInnerHTML={{
-          __html: marked(props.markdown, { renderer: renderer })
-        }}  
-      />
+      <div className='panel-container'>
+        <div
+          id='preview'
+          dangerouslySetInnerHTML={{
+            __html: marked(props.markdown, { renderer: renderer })
+          }}
+        />
+      </div>
     </div>
   )
 }

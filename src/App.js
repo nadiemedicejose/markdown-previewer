@@ -26,7 +26,7 @@ export default function App() {
       </div>
 
       <footer>
-        <p>Designed and developed by <a href="https://nadiemedicejose.web.app">Jose Estrada</a> &copy; 2021</p>
+        <p>Designed and developed by<br></br><a href="https://nadiemedicejose.web.app">Jose Estrada</a> &copy; 2021</p>
       </footer>
     </div>
   )

@@ -1,47 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
 $fonts: 'Sora', 'Helvetica', sans-serif;
-$fonts-code: 'Cascadia Code PL', Consolas, 'Courier New', monospace;
+$fonts-code: 'Cascadia Code PL', 'Fira Code', Consolas, 'Courier New', monospace;
 $darkAccent: #E7859A;
 $lightAccent: #F3B8C6;
 
 $shadow: 1px 1px 10px 2px darken($lightAccent, 20%);
 $default-border: 1px solid darken($lightAccent, 35%);
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background: $lightAccent;
   padding: 1rem;
+  overflow: hidden;
 }
 
 .container {
-  max-width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  align-content: center;
+  grid-template-columns: 1fr;
+  justify-content: stretch;
+  align-content: stretch;
   gap: 1rem;
 }
 
-#editor, #preview {
-  max-height: 74vh;
-  border: 2px solid $darkAccent;
-  border-radius: 3px;
+.panel-container {
   background-color: white;
-  padding: 1rem;
-  font-size: 1rem;
-  
-  overflow: auto;
-}
-
-#editor {
-  font-family: $fonts-code;
-  resize: none;
-  height: 74vh;
-  width: 94.5%;
+  border: 2px solid $darkAccent;
 }
 
 .toolbar {
-  position: relative;
+  position: sticky;
   border: $default-border;
   box-shadow: $shadow;
   padding: 3px;
@@ -50,18 +44,24 @@ body {
   background-color: $darkAccent;
   font-family: $fonts;
   font-weight: 600;
-  font-size: 1rem;
   color: white;
-  i {
-    width: 25px;
-    color: black;
-    margin-left: 5px;
-  }
-  .fa-arrows-alt,
-  .fa-compress {
-    position: absolute;
-    right: -5px;
-  }
+}
+
+#editor, #preview {
+  padding: 1rem;
+  overflow-y: scroll;
+  height: 35vh;
+  min-height: 35vh;
+}
+
+#editor {
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  background-color: transparent;
+  font-family: $fonts-code;
+  font-size: 1rem;
 }
 
 // MARKDOWN STYLES
@@ -79,7 +79,7 @@ body {
     padding: 3px;
     background: lighten($lightAccent, 10%);
     border-radius: 3px;
-    font-size: 1rem;
+    font-size: .8rem;
     font-family: $fonts-code;
   }
 
@@ -92,6 +92,7 @@ body {
 
   h1 {
     border-bottom: 2px solid $darkAccent;
+    margin-bottom: 1rem;
   }
 
   h2 {
@@ -114,20 +115,31 @@ body {
   }
 
   img {
-    max-width: 100%;
+    width: 50%;
   }
 }
 
 footer {
-  color: white;
-  text-align: center;
-  font-family: $fonts;
   margin-top: 1rem;
+  font-family: $fonts;
+  line-height: 1.5rem;
+  text-align: center;
+  color: white;
   a {
     color: $darkAccent;
 
     &:hover {
       color: darken($darkAccent, 10%);
     }
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #editor, #preview {
+    height: 80vh;
   }
 }
