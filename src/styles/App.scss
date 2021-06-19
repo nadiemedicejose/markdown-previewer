@@ -17,8 +17,17 @@ $default-border: 1px solid darken($lightAccent, 35%);
 
 body {
   background: $lightAccent;
-  padding: 1rem;
   overflow: hidden;
+}
+
+.App {
+  height: 100vh;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 .container {
