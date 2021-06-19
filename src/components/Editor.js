@@ -1,14 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Toolbar from './Toolbar'
 
-export default class Editor extends Component {
-  render() {
-    return (
+export default function Editor(props) {
+  return (
+    <div className='panel'>
+      <Toolbar text={props.title} />
       <textarea
         id='editor'
-        onChange={this.props.onChange}
+        onChange={props.onChange}
         type='text'
-        value={this.props.markdown}
+        value={props.markdown}
       />
-    )
-  }
+    </div>
+  )
 }

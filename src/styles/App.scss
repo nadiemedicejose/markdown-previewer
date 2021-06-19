@@ -1,41 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;400;600;700&display=swap');
 
+$fonts: 'Sora', 'Helvetica', sans-serif;
+$fonts-code: 'Cascadia Code PL', Consolas, 'Courier New', monospace;
 $darkAccent: #E7859A;
 $lightAccent: #F3B8C6;
-$backgroundBase: #F3B8C6;
 
-$shadow: 1px 1px 10px 2px darken($backgroundBase, 20%);
-$default-border: 1px solid darken($backgroundBase, 35%);
+$shadow: 1px 1px 10px 2px darken($lightAccent, 20%);
+$default-border: 1px solid darken($lightAccent, 35%);
 
 body {
-  background: $backgroundBase;
-  margin: 2rem auto;
-  max-width: 90%;
+  background: $lightAccent;
+  padding: 1rem;
 }
 
-.App {
-  text-align: center;
+.container {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-content: center;
+  gap: 1rem;
 }
 
-#preview,
-.title {
-  display: inline-block;
+#editor, #preview {
+  max-height: 74vh;
+  border: 2px solid $darkAccent;
+  border-radius: 3px;
+  background-color: white;
+  padding: 1rem;
+  font-size: 1rem;
+  
+  overflow: auto;
 }
 
-.colorScheme {
-  background-color: lighten($backgroundBase, 30%);
-  border: $default-border;
-  box-shadow: $shadow;
-  border-top: none;
+#editor {
+  font-family: $fonts-code;
+  resize: none;
+  height: 74vh;
+  width: 94.5%;
 }
 
 .toolbar {
   position: relative;
-  background-color: $darkAccent;
-  padding: 4px 4px 3px 3px;
   border: $default-border;
   box-shadow: $shadow;
-  font-family: 'Sora', 'Helvetica', sans-serif;
+  padding: 3px;
+  padding-left: 10px;
+  border-radius: 3px;
+  background-color: $darkAccent;
+  font-family: $fonts;
   font-weight: 600;
   font-size: 1rem;
   color: white;
@@ -51,80 +64,10 @@ body {
   }
 }
 
-.fa-retweet,
-.fa-compress,
-.fa-arrows-alt {
-  &:hover {
-    color: lighten($lightAccent, 10%);
-    cursor: pointer;
-  }
-}
-
-.fa-free-code-camp {
-  margin-right: 3px;
-}
-
-.editorWrap {
-  width: 1fr;
-  margin: 1rem auto;
-  .toolbar {
-    width: 99%;
-  }
-  textarea {
-    @extend .colorScheme;
-    width: 99%;
-    min-height: 200px;
-    margin-bottom: -5px;
-    resize: vertical;
-    outline: none;
-    padding-left: 5px;
-    padding-top: 5px;
-    font-size: 12px;
-  }
-}
-
-.converter {
-  width: 100px;
-  text-align: center;
-  font-size: 35px;
-  margin: auto;
-}
-
-.previewWrap {
-  @extend .colorScheme;
-  width: 1fr;
-  margin: 20px auto;
-  min-height: 200px;
-  overflow-wrap: break-word;
-  padding-right: 20px;
-  .toolbar {
-    left: -1px;
-    width: 100%;
-    padding-right: 17px;
-  }
-  #preview {
-    margin-left: 5px;
-    margin-top: -10px;
-    width: 100%;
-  }
-}
-
-.maximized {
-  width: 96%;
-  min-height: 100vh;
-  margin: auto;
-  textarea {
-    min-height: 95vh;
-    resize: none;
-  }
-}
-
-.hide {
-  display: none;
-}
-
 // MARKDOWN STYLES
 #preview {
+  font-family: $fonts;
+
   blockquote {
     border-left: 3px solid $darkAccent;
     color: $darkAccent;
@@ -133,15 +76,18 @@ body {
   }
 
   code {
-    background: white;
-    padding: 1px 4px 2px 4px;
-    font-size: 12px;
-    font-weight: bold;
+    padding: 3px;
+    background: lighten($lightAccent, 10%);
+    border-radius: 3px;
+    font-size: 1rem;
+    font-family: $fonts-code;
   }
 
   pre {
-    background: white;
-    padding: 5px 0 5px 5px;
+    padding: 1rem;
+    border-radius: 3px;
+    background: lighten($lightAccent, 10%);
+    box-shadow: 3px 3px 3px $darkAccent;
   }
 
   h1 {
@@ -162,15 +108,26 @@ body {
     padding-left: 5px;
     padding-right: 5px;
   }
+
+  th {
+    background-color: lighten($lightAccent, 10%);
+  }
+
+  img {
+    max-width: 100%;
+  }
 }
 
-.footer {
+footer {
   color: white;
   text-align: center;
-  font-family: 'Sora', 'Helvetica', sans-serif;
-  margin: 2rem 0;
-
+  font-family: $fonts;
+  margin-top: 1rem;
   a {
     color: $darkAccent;
+
+    &:hover {
+      color: darken($darkAccent, 10%);
+    }
   }
 }
